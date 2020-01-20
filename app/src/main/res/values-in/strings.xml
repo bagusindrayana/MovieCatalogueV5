@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Katalog Film V4</string>
+
+    <string name="title_movie">Film</string>
+    <string name="title_tv">TV</string>
+    <string name="item_favorite">Favorit</string>
+    <string name="item_description">Deskripsi....</string>
+    <string name="item_name">Judul.....</string>
+    <string name="error_toast">Ops ada masalah saat menampilkan data</string>
+    <string name="title_activity_detail_item">detail_item</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="date">Tanggal</string>
+    <string name="title_favorite">favorit</string>
+    <string name="text">TextView....</string>
+    <string name="test">Test...</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+</resources>
