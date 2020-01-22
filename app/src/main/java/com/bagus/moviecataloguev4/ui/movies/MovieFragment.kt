@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bagus.moviecataloguev4.R
+import com.bagus.moviecataloguev4.model.movie.MovieGenres
 import com.bagus.moviecataloguev4.ui.movies.category.CardViewMovieCategorysAdapter
 
 
@@ -36,15 +37,26 @@ class MovieFragment : Fragment() {
 
         movieViewMovdel = ViewModelProvider(this).get(MovieViewModel::class.java)
         if (savedInstanceState == null) {
+            // proses ambil data
             movieViewMovdel.getGenre()
-        }
+        } else {
+            val list = savedInstanceState.getParcelableArrayList<MovieGenres>("EXTRA_STATE")
+            if (list != null) {
+                rvMovies!!.adapter =
+                    CardViewMovieCategorysAdapter(
+                        list
+                    )
 
+            }
+        }
         showRecyclerCardView()
         swipeLayout = view.findViewById(R.id.swipe_container) as? SwipeRefreshLayout
         swipeLayout?.setOnRefreshListener {
             movieViewMovdel.getGenre()
             swipeLayout?.setRefreshing(false);
         }
+
+
 
         return view
 
@@ -63,7 +75,6 @@ class MovieFragment : Fragment() {
                         CardViewMovieCategorysAdapter(
                             items
                         )
-
                 }
             })
         }

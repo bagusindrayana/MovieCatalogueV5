@@ -7,13 +7,14 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
-
+    private var mTopToolbar: Toolbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_movie, R.id.navigation_tv, R.id.navigation_favorite
             )
         )
+
+//        mTopToolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(mTopToolbar);
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 

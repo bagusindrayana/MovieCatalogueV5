@@ -21,7 +21,7 @@ class CardViewMovieCategorysAdapter(private val listMovieGenres: ArrayList<Movie
     private var context: Context? = null
     private  var rvItems:RecyclerView? = null
     private val viewPool = RecyclerView.RecycledViewPool()
-
+    public val list: ArrayList<MovieGenres> = listMovieGenres
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): CardViewViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.category_cardview, viewGroup, false)

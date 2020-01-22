@@ -4,12 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
+import androidx.viewpager.widget.ViewPager
 import com.bagus.moviecataloguev4.R
 import com.bagus.moviecataloguev4.db.AppDatabase
+import com.bagus.moviecataloguev4.ui.favorite.movie.FavoriteMovieFragment
+import com.bagus.moviecataloguev4.ui.favorite.tv.FavoriteTvFragment
+import com.google.android.material.tabs.TabLayout
 
 
 class FavoriteFragment : Fragment() {
@@ -22,28 +27,26 @@ class FavoriteFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favorite, container, false)
         super.onViewCreated(view, savedInstanceState)
-
+        val viewPager = view.findViewById<ViewPager>(R.id.list_tab_container)
         getActivity()?.setTitle(R.string.title_favorite);
-        rv_favorites = view.findViewById(R.id.rv_favorites)
-        rv_favorites?.layoutManager = LinearLayoutManager(this.activity)
-        rv_favorites?.setHasFixedSize(true)
-
-        var rom : AppDatabase? = null;
-        context?.let {
-            rom = Room.databaseBuilder(it, AppDatabase::class.java,"favorites").allowMainThreadQueries().build()
-        }
-
-        val data = rom?.favoriteDao()?.getAll()
-
-
-        data?.let{
-            rv_favorites!!.adapter =
-                FavoriteAdapter(
-                    it
-                )
-        }
-
+        initViews(view)
         return view
+    }
+
+    private fun initViews(view : View) {
+        val viewPager = view.findViewById<ViewPager>(R.id.list_tab_container)
+        setupViewPager(viewPager)
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabs)
+        tabLayout.setupWithViewPager(viewPager)
+    }
+
+    private fun setupViewPager(viewPager: ViewPager) {
+        val mainFragmentPagerAdapter = MainFragmentPagerAdapter(getChildFragmentManager())
+        mainFragmentPagerAdapter.addFragment(FavoriteMovieFragment(), this.getString(R.string.title_movie))
+        mainFragmentPagerAdapter.addFragment(FavoriteTvFragment(), this.getString(R.string.title_tv))
+
+        viewPager.adapter = mainFragmentPagerAdapter
+
     }
 
 

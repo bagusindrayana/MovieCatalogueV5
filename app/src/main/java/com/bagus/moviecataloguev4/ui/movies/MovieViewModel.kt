@@ -48,7 +48,7 @@ class MovieViewModel : ViewModel() {
                 Log.d("RESPONSE",response.raw().request().url().toString())
             }
             override fun onFailure(call: Call<MovieGenresResponse>, t: Throwable){
-                Log.e("Ops",t.message)
+                println(t)
 
             }
         })
@@ -60,7 +60,7 @@ class MovieViewModel : ViewModel() {
         apiRoute.getDataMovie(g[index].id).enqueue(object :
             Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                if(response.code() == 200) {
+                if(response.code() == 200 ) {
                     val items = MC(g[index].id,g[index].name,response.body().results)
                     index++
                     dataMovie.add(items)

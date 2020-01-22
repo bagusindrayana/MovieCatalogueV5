@@ -10,11 +10,11 @@ class Favorite (
     @PrimaryKey(autoGenerate = true)
     var id: Int,
     @ColumnInfo(name = "title")
-    var title: String? = null,
+    var title: String,
     @ColumnInfo(name = "poster")
-    var poster: String? = null,
+    var poster: String,
     @ColumnInfo(name = "item_id")
-    var item_id: Int? = null,
+    var item_id: Int,
     @ColumnInfo(name = "type")
     var type: String? = null
 
