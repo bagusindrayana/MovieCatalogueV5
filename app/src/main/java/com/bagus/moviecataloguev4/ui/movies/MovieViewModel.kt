@@ -44,11 +44,9 @@ class MovieViewModel : ViewModel() {
                     g = response.body().genres
                     getMovie()
                 }
-
-                Log.d("RESPONSE",response.raw().request().url().toString())
             }
             override fun onFailure(call: Call<MovieGenresResponse>, t: Throwable){
-                println(t)
+                Log.e("Ops", t.message)
 
             }
         })
@@ -75,7 +73,6 @@ class MovieViewModel : ViewModel() {
             }
             override fun onFailure(call: Call<MovieResponse>, t: Throwable){
                 Log.e("Ops",t.message)
-                Log.d("RESPONSE",g[index].id.toString())
             }
         })
     }

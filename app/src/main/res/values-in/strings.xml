@@ -15,4 +15,8 @@
     <string name="text">TextView....</string>
     <string name="test">Test...</string>
     <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="rating">Rating...</string>
+    <string name="description">Deskripsi...</string>
+    <string name="status">Status</string>
+
 </resources>

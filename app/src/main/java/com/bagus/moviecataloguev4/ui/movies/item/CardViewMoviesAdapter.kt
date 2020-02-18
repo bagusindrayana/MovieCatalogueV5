@@ -29,6 +29,12 @@ class CardViewMoviesAdapter(private val listMovie: ArrayList<Movie>) : RecyclerV
 
     override fun onBindViewHolder(cardViewViewHolder: CardViewViewHolder, i: Int) {
         val movie = listMovie[i]
+        val options = RequestOptions()
+            .centerCrop()
+            .placeholder(R.mipmap.ic_launcher_round)
+            .error(R.mipmap.ic_launcher_round)
+
+
         try {
             if (movie.poster_path != null && movie.poster_path != ""){
                 val options = RequestOptions()
@@ -36,10 +42,14 @@ class CardViewMoviesAdapter(private val listMovie: ArrayList<Movie>) : RecyclerV
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.mipmap.ic_launcher_round)
 
-                Glide.with(context!!).load("https://image.tmdb.org/t/p/w342/"+movie.poster_path).apply(options).into(cardViewViewHolder.poster)
+                Glide.with(cardViewViewHolder.poster.getContext()).load("https://image.tmdb.org/t/p/w342/"+movie.poster_path).apply(options).into(cardViewViewHolder.poster)
+            } else {
+                Log.d("PosterLog1", movie.poster_path.toString())
+                cardViewViewHolder.poster.setImageResource(R.mipmap.ic_launcher_round)
             }
         }  catch (e: Exception) {
-            Log.d("Poster", e.message.toString())
+            Log.d("PosterLog2", e.message.toString())
+            cardViewViewHolder.poster.setImageResource(R.mipmap.ic_launcher_round)
         }
         cardViewViewHolder.title.text = movie.title
         cardViewViewHolder.itemView.setOnClickListener {

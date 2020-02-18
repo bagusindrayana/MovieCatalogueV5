@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bagus.moviecataloguev4.R
-import com.bagus.moviecataloguev4.model.movie.MovieGenres
 import com.bagus.moviecataloguev4.ui.movies.category.CardViewMovieCategorysAdapter
-
 
 
 class MovieFragment : Fragment() {
@@ -39,15 +37,6 @@ class MovieFragment : Fragment() {
         if (savedInstanceState == null) {
             // proses ambil data
             movieViewMovdel.getGenre()
-        } else {
-            val list = savedInstanceState.getParcelableArrayList<MovieGenres>("EXTRA_STATE")
-            if (list != null) {
-                rvMovies!!.adapter =
-                    CardViewMovieCategorysAdapter(
-                        list
-                    )
-
-            }
         }
         showRecyclerCardView()
         swipeLayout = view.findViewById(R.id.swipe_container) as? SwipeRefreshLayout
@@ -76,6 +65,7 @@ class MovieFragment : Fragment() {
                             items
                         )
                 }
+                showLoading(false)
             })
         }
 
@@ -90,6 +80,11 @@ class MovieFragment : Fragment() {
         }
     }
 
+//    fun isOnline(context: Context): Boolean {
+//        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//        val networkInfo = connectivityManager.activeNetworkInfo
+//        return networkInfo != null && networkInfo.isConnected
+//    }
 
 
 

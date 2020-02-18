@@ -14,5 +14,9 @@
     <string name="text">TextView....</string>
     <string name="test">Test...</string>
     <string name="change_language_settings">Change Language Settings</string>
+    <string name="rating">Rating...</string>
+    <string name="description">Description...</string>
+    <string name="status">Status</string>
+
 
 </resources>

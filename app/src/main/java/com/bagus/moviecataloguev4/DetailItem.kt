@@ -1,13 +1,14 @@
 package com.bagus.moviecataloguev4
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.room.Room
@@ -15,13 +16,12 @@ import com.bagus.moviecataloguev4.api.Client
 import com.bagus.moviecataloguev4.api.Route
 import com.bagus.moviecataloguev4.db.AppDatabase
 import com.bagus.moviecataloguev4.db.table.Favorite
-import com.bagus.moviecataloguev4.model.movie.Movie
 import com.bagus.moviecataloguev4.model.movie.DetailMovie
+import com.bagus.moviecataloguev4.model.movie.Movie
 import com.bagus.moviecataloguev4.model.tv.DetailTv
 import com.bagus.moviecataloguev4.model.tv.Tv
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.activity_detail_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,12 +31,13 @@ class DetailItem : AppCompatActivity() {
     private var mTopToolbar: Toolbar? = null
     private var menu : Menu? = null
     var rom : AppDatabase? = null
-    var datanya : Array<Any> = arrayOf()
+    var datanya : Array<String> = arrayOf()
 
     var mProgressBar: ProgressBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_detail_item)
 
         rom = Room.databaseBuilder(this, AppDatabase::class.java,"favorites").allowMainThreadQueries().build()
@@ -52,10 +53,8 @@ class DetailItem : AppCompatActivity() {
         mProgressBar = findViewById(R.id.loading)
 
 
-
-
-
         val kelas = intent.getStringExtra(EXTRA_CLASS)
+
         if (kelas == "MOVIE") {
             val selectedData = intent.getParcelableExtra<Movie>(EXTRA_DATA)
             getDetailMovie(selectedData.id)
@@ -63,19 +62,27 @@ class DetailItem : AppCompatActivity() {
 
 
 
-            datanya =  arrayOf(0,selectedData.title,selectedData.poster_path,selectedData.id,"MOVIE")
+            datanya = arrayOf(
+                "0",
+                selectedData.title,
+                selectedData.poster_path,
+                selectedData.id.toString(),
+                "MOVIE"
+            )
         } else if (kelas == "TV") {
             val selectedData = intent.getParcelableExtra<Tv>(EXTRA_DATA)
             getDetailTv(selectedData.id)
             setTitle(selectedData.name)
-            datanya = arrayOf(0,selectedData.name,selectedData.poster_path,selectedData.id,"TV")
+            datanya =
+                arrayOf("0", selectedData.name, selectedData.poster_path, selectedData.id.toString(), "TV")
         }
 
 
+    }
 
-
-
-
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putStringArray("DATANYA", datanya)
     }
     
     fun getDetailMovie(movie_id : Int){
@@ -164,11 +171,14 @@ class DetailItem : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_detail_item, menu)
         this.menu = menu
-        val cek = rom?.favoriteDao()?.findByItemId(datanya[3].toString().toInt(),datanya[4].toString())
-        println(cek)
-        if(cek != null){
-            menu?.getItem(0)?.setIcon(R.drawable.ic_favorite_red)
+        if(datanya.size > 0){
+            val cek = rom?.favoriteDao()?.findByItemId(datanya[3].toString().toInt(),datanya[4].toString())
+            println(cek)
+            if(cek != null){
+                menu?.getItem(0)?.setIcon(R.drawable.ic_favorite_red)
+            }
         }
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -197,14 +207,10 @@ class DetailItem : AppCompatActivity() {
 
     private fun showLoading(state: Boolean) {
         if (state) {
-            this.findViewById<FrameLayout>(R.id.poster).visibility = View.GONE
-            this.findViewById<TextView>(R.id.description).visibility = View.GONE
-            this.findViewById<TableLayout>(R.id.tableLayout).visibility = View.GONE
+
             mProgressBar?.visibility  = View.VISIBLE
         } else {
-            this.findViewById<FrameLayout>(R.id.poster).visibility = View.VISIBLE
-            this.findViewById<TextView>(R.id.description).visibility = View.VISIBLE
-            this.findViewById<TableLayout>(R.id.tableLayout).visibility = View.VISIBLE
+
             mProgressBar?.visibility = View.GONE
         }
     }
