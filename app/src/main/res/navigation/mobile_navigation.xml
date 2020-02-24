@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/navigation_movie"
-        android:name="com.bagus.moviecataloguev4.ui.movies.MovieFragment"
+        android:name="com.bagus.moviecataloguev5.ui.movies.MovieFragment"
         android:label="@string/title_movie" />
 
     <fragment
         android:id="@+id/navigation_tv"
-        android:name="com.bagus.moviecataloguev4.ui.tv.TvFragment"
+        android:name="com.bagus.moviecataloguev5.ui.tv.TvFragment"
         android:label="@string/title_tv" />
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.bagus.moviecataloguev4.ui.favorite.FavoriteFragment"
+        android:name="com.bagus.moviecataloguev5.ui.favorite.FavoriteFragment"
         android:label="@string/item_favorite" />
 </navigation>

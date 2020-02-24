@@ -29,8 +29,8 @@
         <ImageView
             android:id="@+id/coverImageView"
 
-            android:layout_width="match_parent"
-            android:layout_height="365dp"
+            android:layout_width="0dp"
+            android:layout_height="293dp"
             android:layout_gravity="center"
             android:background="@color/white"
             android:contentDescription="@string/test"
@@ -56,25 +56,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+
         <TextView
             android:id="@+id/rating"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#77CCCBCB"
-            android:padding="10dp"
-            android:text="@string/rating"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rating"
+            android:drawableLeft="@drawable/ic_star"
+            android:paddingRight="5dp"
+            android:text="8.9"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_fav" />
+
 
         <TextView
             android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:text="@string/description"
             android:textColor="@color/white"

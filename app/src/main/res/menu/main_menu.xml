@@ -12,8 +12,25 @@
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         android:textColor="#FFFFFF" />
 
+
+
+    <item
+        android:id="@+id/search"
+        android:title="@string/search_title"
+        android:icon="@drawable/ic_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
+
     <item
         android:id="@+id/action_change_settings"
+        android:title="@string/action_change_settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_change_language"
         android:title="@string/change_language_settings"
         app:showAsAction="never"/>
+
+
+
 </menu>

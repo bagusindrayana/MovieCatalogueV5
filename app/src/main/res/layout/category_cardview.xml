@@ -19,7 +19,8 @@
         android:id="@+id/item_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
         android:orientation="horizontal"
-        tools:listitem="@layout/item_cardview"
-        android:descendantFocusability="blocksDescendants"/>
+        tools:itemCount="3"
+        tools:listitem="@layout/item_cardview" />
 </LinearLayout>

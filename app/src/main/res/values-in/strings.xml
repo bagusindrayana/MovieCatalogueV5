@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Katalog Film V4</string>
+    <string name="app_name">Katalog Film V5</string>
 
+    <string name="porster_movie">Poster Film</string>
     <string name="title_movie">Film</string>
+
+    <string name="porster_tv">Poster Tv</string>
     <string name="title_tv">TV</string>
     <string name="item_favorite">Favorit</string>
     <string name="item_description">Deskripsi....</string>
@@ -18,5 +21,21 @@
     <string name="rating">Rating...</string>
     <string name="description">Deskripsi...</string>
     <string name="status">Status</string>
+    <string name="search_title">Cari...</string>
+
+    <string name="appwidget_text">Favoritku</string>
+    <string name="add_widget">Tambah widget</string>
+    <string name="empty_text">NO DATA</string>
+
+    <string name="daily_reminder_message">Hai,apakah kamu sibuk? yuk cari film dan serial tv favortimu</string>
+    <string name="daily_reminder_title">Kami merindukanmu :(</string>
+
+    <string name="daily_reminder_setting_title">Pengingat Setiap Hari</string>
+    <string name="daily_reminder_setting_desc">Memastikanmu agar tidak kelewatan film-film terbaik</string>
+
+    <string name="daily_release_setting_title">Film yang rilis setiap hari</string>
+    <string name="daily_release_setting_desc">Memberikan informasi film-film apa saja yang rilis hari ini</string>
+
+    <string name="action_change_settings">Pengaturan Notifikasi</string>
 
 </resources>

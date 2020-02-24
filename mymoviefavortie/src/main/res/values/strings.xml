@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyMovieFavortie</string>
+    <string name="item_name">Title.....</string>
+    <string name="porster_movie">Poster Movies</string>
+    <string name="title_movie">Movies</string>
+
+    <string name="porster_tv">Poster Tv</string>
+    <string name="title_tv">TV</string>
+    <string name="item_favorite">Favorite</string>
+    <string name="item_description">Descripiton....</string>
+    <string name="error_toast">Ops something is wrong when try to show movie</string>
+    <string name="title_activity_detail_item">detail_item</string>
+    <string name="action_settings">Settings</string>
+    <string name="date">Date</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="text">TextView....</string>
+    <string name="test">Test...</string>
+</resources>
